@@ -28,8 +28,8 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 47.0
-height = 152.0
+radius = 41.0638
+height = 73.8724
 
 [node name="Player" type="Area2D"]
 position = Vector2( 278, 609 )
@@ -38,9 +38,10 @@ Velocidad = 400
 
 [node name="Sprite_player" type="AnimatedSprite" parent="."]
 position = Vector2( 75.3646, -185.909 )
-scale = Vector2( 0.803646, 0.753648 )
+scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
 animation = "lado"
+frame = 1
 speed_scale = 5.0
 playing = true
 __meta__ = {
@@ -48,8 +49,10 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 76.9362, -183.015 )
+position = Vector2( 77, -184 )
 shape = SubResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
+
+[connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]
