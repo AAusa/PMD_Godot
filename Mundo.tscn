@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Mundo.gd" type="Script" id=2]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -7, -4, 0, 0, 0, 0, -8, -2, 0, 0, 0, 0, 631, -2, 0, 0, 0, 0, 632, 956, 0, 0, 0, 0, -8, 956, 0, 0, 0, 0, -7, -4 )
+}
 
 [node name="Mundo" type="Node"]
+script = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
@@ -15,5 +22,18 @@ wait_time = 0.5
 wait_time = 2.0
 one_shot = true
 
-[node name="PositionDeInicio" type="Position2D" parent="."]
+[node name="PosicionDeInicio" type="Position2D" parent="."]
 position = Vector2( 320, 480 )
+
+[node name="camino" type="Path2D" parent="."]
+position = Vector2( 8, 3 )
+curve = SubResource( 1 )
+
+[node name="RocaPosicion" type="PathFollow2D" parent="camino"]
+position = Vector2( -7, -4 )
+rotation = 0.443874
+
+[connection signal="golpe" from="Player" to="." method="game_over"]
+[connection signal="timeout" from="RocaTimer" to="." method="_on_RocaTimer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
+[connection signal="timeout" from="InicioTimer" to="." method="_on_InicioTimer_timeout"]
