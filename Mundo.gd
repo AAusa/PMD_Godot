@@ -9,10 +9,13 @@ func nuevo_juego():
 	Score = 0
 	$Player.inicio($PosicionDeInicio.position) #Posicion de inicio del Player
 	$InicioTimer.start()
+	$Interfaz.mostrar_mensaje("Listo!")
+	$Interfaz.update_score(Score)
 
 func game_over():
 	$ScoreTimer.stop()
 	$RocaTimer.stop()
+	$Interfaz.game_over()
 
 
 func _on_InicioTimer_timeout():
@@ -22,6 +25,7 @@ func _on_InicioTimer_timeout():
 
 func _on_ScoreTimer_timeout():
 	Score += 1
+	$Interfaz.update_score(Score)
 
 
 func _on_RocaTimer_timeout():
