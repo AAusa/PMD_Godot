@@ -11,13 +11,17 @@ config_version=4
 [application]
 
 config/name="Proyecto Godot"
-run/main_scene="res://Player.tscn"
+run/main_scene="res://Mundo.tscn"
 config/icon="res://icon.png"
 
 [display]
 
 window/size/width=640
 window/size/height=960
+
+[global]
+
+"escena principal"=false
 
 [gui]
 

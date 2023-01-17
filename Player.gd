@@ -40,12 +40,15 @@ func _process(delta):
 		$Sprite_player.animation = "frente"
 
 
-func _on_Player_body_entered(body):#Cuando ocurre una colision
-	hide()
-	emit_signal("golpe")
-	$CollisionShape2D.disabled = true;
+
 	
 func inicio(pos):
 	position = pos
 	show()#Mostrar el personaje
 	$CollisionShape2D.disabled = false;
+
+
+func _on_Player_body_entered(_body):
+	hide()
+	emit_signal("golpe")
+	$CollisionShape2D.disabled = true
