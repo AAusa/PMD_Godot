@@ -11,14 +11,12 @@ func nuevo_juego():
 	$InicioTimer.start()
 	$Interfaz.mostrar_mensaje("Listo!")
 	$Interfaz.update_score(Score)
-	$AudioGameOver.stop()	
 	$Musica.play()
 
 func game_over():
 	$ScoreTimer.stop()
 	$RocaTimer.stop()
 	$Interfaz.game_over()
-	$AudioGameOver.play()
 	$Musica.stop()
 
 
